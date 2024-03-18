@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">  
+    <style>
+        .background {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <title>HTML Tutorial</title>
+</head>
+<body>
+   <!-- Praksa mi je ful všeč :D --> 
+    <div>
+        <h1>Hello World</h1>
+        <!-- v VSC pritisni CTRL + ? da takoj zakomentiraš line -->
+    </div>
+    <hr>
+
+    <!-- Div example -->
+    <div>
+        <p title="This is a tooltip">Lorem ipsum dolor sit amet consectetur adipisicing elit. <span style="color:red">Eos aspernatur facilis</span>, dicta maiores quae soluta! Sequi sit soluta possimus, ratione esse libero ullam quia itaque saepe inventore reprehenderit earum officia?</p>
+        <p class="background">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, inventore ipsam. Accusamus, quas dolore nostrum quae earum vero eum repudiandae dicta quod eos necessitatibus, officia quisquam cumque iure odio! Quaerat.</p>
+    </div>
+    <br>
+
+    <!-- Povezave example -->
+    <a href="https://www.google.com">Go to google i guess</a>
+    <br>
+    <a href="#bookmark">
+        <img src="untitled.jpg" alt="alternate description here" width="300">
+    </a>
+    <br>
+
+    <!-- Listi example -->
+    <ol type="1" start="24">
+        <li>List item #1</li>
+        <ul>
+            <li>Sub item #1</li>
+            <li>Sub item #2</li>
+        </ul>
+        <li>List item #2</li>
+        <li>List item #3</li>
+        <li>List item #4</li>
+        <li>List item #5</li>
+    </ol>
+    <br>
+
+    <!-- Table example -->
+    <table>
+        <thead>
+            <tr>
+                <th>First</th>
+                <th>Last</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Matej</td>
+                <td>Novak</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Natej</td>
+                <td>Movak</td>
+                <td>52</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>This is a table caption</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th colspan="2">Telefon</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Matej</td>
+                <td>555-555-5555</td>
+                <td>777-777-7777</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>Matej</td>
+        </tr>
+        <tr>
+            <th rowspan="2">Telefon</th>
+            <td>555-555-5555</td>
+        </tr>
+        <tr>
+            <td>777-777-7777</td>
+        </tr>
+    </table>
+    <hr>
+
+    <!-- Form example -->
+    <div id="bookmark">
+        <form action="server.php">
+            <fieldset>
+                <legend>Personal information:</legend>
+                First Name:<br>
+                <input type="text" name="firstname" value="" placeholder="First Name here"><br>
+                Last Name:<br>
+                <input type="text" name="lastname" value="" placeholder="Last Name here"><br>
+                <input type="radio" name="options">Option 1
+                <input type="radio" name="options">Option 2<br>
+                <input type="checkbox" name="boxes" checked>Checkbox 1
+                <input type="checkbox" name="boxes">Checkbox 2
+                <input type="checkbox" name="boxes">Checkbox 3<br>
+                <label for="carSelect">Select:</label>
+                <select name="cars" id="carSelect" multiple>
+                    <option value="BMW" selected>BWM</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Audi">Audi</option>
+                </select>
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+
+        <!-- Button example -->
+        <button>Click me!</button>
+
+    </div>
+</body>
+</html>
