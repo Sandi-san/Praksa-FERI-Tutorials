@@ -1,0 +1,48 @@
+div {
+    background-color: aquamarine;
+    border: 2px solid blue;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 200px 250px;
+    /* grid-template-columns: 2fr 1fr; FRACTION VELIKOST */
+    /* grid-template-columns: repeat(4, 100px); REPEAT 4 GRIDE VELIKOSTI 100px */
+    /* grid-auto-rows: 150px; DEFAULT */
+    grid-auto-rows: minmax(150px, auto); /* min 150px in ostalo se skalira */
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    /* definiraj rowe (npr. grid-item-1, glej spodaj)
+    grid-template-areas: "header header" 
+    "sidebar content"
+    "sidebar content" 
+    */
+
+    justify-content: end;
+    align-content: center;
+    height: 100vh;
+}
+/*
+.grid-item-1 {
+    grid-area: header;
+}
+.grid-item-2 {
+    grid-area: sidebar;
+}
+*/
+.grid-item-1 {
+    /* definiraj kje se column zacne in konca (rowspan) */
+    grid-column-start: 1;
+    grid-column-end: 2; /* upostevaj: start=1, column=2, end=3 (-1 za konec) */
+}
+.grid-item-2 {
+    /* isto kot grid-start/end */
+    grid-column: 2 / 4;
+    /* ohrani minimalno velikost */
+    align-self: start;
+    justify-self: center;
+}
+.grid-item-3 {
+    /* isto kot grid-column */
+    grid-column: span 2;
+}
