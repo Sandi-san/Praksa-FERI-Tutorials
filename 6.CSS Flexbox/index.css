@@ -1,0 +1,44 @@
+.parent {
+    width: 1000px;
+    height: 1000px;
+    background-color: aqua;
+    margin: 50px auto;
+    /* childreni aligned horizontalno (row) */
+    display: flex;
+    /* flex-direction: row; ISTO */
+
+    /* DELUJE NAD CHILDRENIH */
+    justify-content: space-around; /* horizontalno */
+    align-items: center; /* vertikalno */
+
+    /* item v naslednji row ce ni dosti prostora */
+    /* flex-wrap: wrap; */
+}
+
+.children {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 0, 225);
+    color: white;
+    border: 1px solid black;
+
+    /* centriraj content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.child1 {
+    order: 2;
+    /* flex-grow: 2; */
+    align-self: center;
+}
+.child2 {
+    order: 1;
+    align-self: flex-start;
+    
+}
+.child3 {
+    order: 3;
+    align-self: flex-end;
+}
