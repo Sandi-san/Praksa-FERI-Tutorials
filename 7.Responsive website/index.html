@@ -35,7 +35,13 @@
 
             <div class="showcase-form card">
                 <h2>Request a Demo</h2>
-                <form>
+                <form name="contacte" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: 
+                            <input name="bot-field"/>
+                        </label>
+                    </p>
                     <div class="form-control">
                         <input type="text" name="name" placeholder="Name" required>
                     </div>
@@ -103,5 +109,65 @@
             <img src="../images/cloud.png" alt="">
         </div>
     </section>
+
+    <!-- Languages -->
+    <section class="languages">
+        <h2 class="md text-center my-2">
+            Supported Languages
+        </h2>
+        <div class="container flex">
+            <div class="card">
+                <h4>Node.js</h4>
+                <img src="../images/logos/node.png" alt="">
+            </div>
+            <div class="card">
+                <h4>Python</h4>
+                <img src="../images/logos/python.png" alt="">
+            </div>
+            <div class="card">
+                <h4>C#</h4>
+                <img src="../images/logos/csharp.png" alt="">
+            </div>
+            <div class="card">
+                <h4>Ruby</h4>
+                <img src="../images/logos/ruby.png" alt="">
+            </div>
+            <div class="card">
+                <h4>PHP</h4>
+                <img src="../images/logos/php.png" alt="">
+            </div>
+            <div class="card">
+                <h4>Scala</h4>
+                <img src="../images/logos/scala.png" alt="">
+            </div>
+            <div class="card">
+                <h4>Clojure</h4>
+                <img src="../images/logos/clojure.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>Loruki</h1>
+                <p>Copyright &copy; 2024</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="docs.html">Docs</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#"><i class="fab fa-github fa-2x"></i></a>
+                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
