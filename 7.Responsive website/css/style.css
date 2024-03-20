@@ -1,0 +1,172 @@
+/* import Lato font iz fonts.google.com */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+/* CSS properties (spremenljivke, pouporaba) */
+:root {
+    --primary-color: #047aed;
+    --secondary-color: #1c3fa8;
+    --dark-color: #002240;
+    --light-color: #f4f4f4;
+}
+
+/* CSS reset */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+h1, h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+img {
+    width: 100%;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    color: #fff;
+    height: 70px;
+}
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.navbar a:hover {
+    border-bottom: 2px #fff solid;
+}
+
+/* Showcase */
+.showcase {
+    height: 400px;
+    background-color: var(--primary-color);
+    color: #fff;
+    position: relative;
+}
+
+.showcase h1 {
+    font-size: 40px;
+}
+
+.showcase p {
+    margin: 20px 0;
+}
+
+.showcase .grid {
+    grid-template-columns: 55% 45%; /* text, form width*/
+    gap: 30px;
+    overflow: visible; /* odstrani scrollbar */
+}
+
+.showcase-form {
+    position: relative;  /* za top */
+    top: 60px;
+    height: 350px;
+    width: 400px;
+    padding: 40px;
+    z-index: 100;
+    justify-self: flex-end; /* porini form desno */
+}
+
+.showcase-form .form-control {
+    margin: 30px 0;
+}
+
+.showcase-form input[type='text'],
+.showcase-form input[type='email'] {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.showcase-form input:focus {
+    outline: none;
+}
+
+/* psuedo selectors */
+.showcase::before, .showcase::after {
+    content: ''; /* potrebno */
+    position: absolute; /* glede v .showcase */
+    height: 100px;
+    bottom: -70px;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    transform: skewY(-3deg);
+    /* za ostale browserje: chrome, mozilla, microsoft */
+    -webkit-transform: skewY(-3deg);
+    -moz-transform: skewY(-3deg);
+    -ms-transform: skewY(-3deg);
+}
+
+/* Stats */
+.stats {
+    padding-top: 100px;
+}
+
+.stats-heading {
+    max-width: 500px;
+    margin: auto;
+}
+
+.stats .grid h3 {
+    font-size: 35px;
+}
+
+.stats .grid p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Cli */
+.cli .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* karkoli je 1st child (slika) */
+.cli .grid > *:first-child {
+    grid-column: 1 / span 2; /* 1st child se spanna iz 1 do 2 columna */
+    grid-row: 1 / span 2;
+}
+
+/* Cloud */
+.cloud .grid {
+    grid-template-columns: 4fr 3fr;
+}
