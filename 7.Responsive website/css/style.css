@@ -110,12 +110,11 @@ pre {
     grid-template-columns: 55% 45%;
     /* text, form width*/
     gap: 30px;
-    overflow: visible;
-    /* odstrani scrollbar */
+    overflow: visible; /* odstrani scrollbar */
 }
 
 .showcase-text {
-    animation: slideInFromLeft 1s ease-in;
+    animation: slideInFromLeft 1s ease-in; /* aktivira animacijo za objekt */
 }
 
 .showcase-form {
@@ -126,8 +125,7 @@ pre {
     width: 400px;
     padding: 40px;
     z-index: 1;
-    justify-self: flex-end;
-    /* porini form desno */
+    justify-self: flex-end; /* porini form desno */
     animation: slideInFromRight 1s ease-in;
 }
 
@@ -151,16 +149,14 @@ pre {
 /* psuedo selectors */
 .showcase::before,
 .showcase::after {
-    content: '';
-    /* potrebno */
-    position: absolute;
-    /* glede v .showcase */
+    content: ''; /* potrebno */
+    position: absolute; /* glede .showcase */
     height: 100px;
     bottom: -70px;
     right: 0;
     left: 0;
     background-color: #fff;
-    transform: skewY(-3deg);
+    transform: skewY(-3deg); /* tilti element za 3 stopinje */
     /* za ostale browserje: chrome, mozilla, microsoft */
     -webkit-transform: skewY(-3deg);
     -moz-transform: skewY(-3deg);
@@ -195,8 +191,7 @@ pre {
 
 /* karkoli je 1st child (slika) */
 .cli .grid>*:first-child {
-    grid-column: 1 / span 2;
-    /* 1st child se spanna iz 1 do 2 columna */
+    grid-column: 1 / span 2;  /* 1st child se spanna iz 1 do 2 columna */
     grid-row: 1 / span 2;
 }
 
@@ -207,15 +202,14 @@ pre {
 
 /* Languages */
 .languages .flex {
-    flex-wrap: wrap;
-    /* v next line ob resize */
+    flex-wrap: wrap; /* premakni v next vrsto ob resize */
 }
 
 .languages .card {
     text-align: center;
     margin: 18px 10px 40px;
     transition: transform 0.2s ease-in;
-    /* animacija (smooth) za hover */
+    /* smooth animacija za hover */
 }
 
 .languages .card h4 {
@@ -355,7 +349,6 @@ pre {
 
 /* Tablets and under */
 @media(max-width: 768px) {
-
     .grid,
     .showcase .grid,
     .stats .grid,
@@ -410,6 +403,7 @@ pre {
 @media(max-width: 500px) {
     .navbar {
         height: 110px;
+        position: relative; /* ne sticky-at navbar na mobile */
     }
 
     .navbar .flex {
