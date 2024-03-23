@@ -6,8 +6,9 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // name: String,
     industry: String
 });
 
 //ustvari collection v mongoDB
-module.exports = mongoose.model('Customer',customerSchema);
+module.exports = mongoose.model('Customer', customerSchema);
