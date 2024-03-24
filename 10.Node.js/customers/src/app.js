@@ -93,7 +93,7 @@ app.get('/api/customers/:id', async (req, res) => {
 //SAVE CUSTOMER
 app.post('/api/customers', async (req, res) => {
     //POZOR: req.body MORE BITI V OBLIKI JSON
-    //sicer poslje name {name,industry} sintakso
+    //sicer poslje "name {name,industry}"" sintakso
     console.log(req.body);
     const customer = new Customer(req.body);
     try {
@@ -106,28 +106,88 @@ app.post('/api/customers', async (req, res) => {
     }
 });
 
-
-//UPDATE CUSTOMER (PUT (vse) ali PATCH (le spremenjene el.))
+//UPDATE CUSTOMER (PUT - vse elemente)
 app.put('/api/customers/:id', async (req, res) => {
     try {
         const customerId = req.params.id;
         //posodobi enega glede _id in poslji novi data
-        const result = await Customer.replaceOne({ _id: customerId }, req.body);
-        console.log(result);
-        res.json({ updatedCount: result.modifiedCount });
+        // const result = await Customer.findOne({ _id: customerId }, req.body);
+        //posodobi enega in vrni (POZOR po defaultu vrne OLD data, za NEW data dodaj new: true)
+        const customer = await Customer.findOneAndReplace({ _id: customerId }, req.body, { new: true });
+        console.log(customer);
+        //vrne count kolikokrat se je objekt posodobil
+        // res.json({ updatedCount: result.modifiedCount });
+        res.json({ customer });
     } catch (error) {
+        console.log(e.message);
+        res.status(500).json({ error: 'Something went wrong' })
+    }
+});
+
+//UPDATE CUSTOMER (PATCH - spremeni le dolocne elemente)
+app.patch('/api/customers/:id', async (req, res) => {
+    try {
+        const customerId = req.params.id;
+        const customer = await Customer.findOneAndUpdate({ _id: customerId }, req.body, { new: true });
+        console.log(customer);
+        res.json({ customer });
+    } catch (error) {
+        console.log(e.message);
         res.status(500).json({ error: 'Something went wrong' })
     }
 });
 
 //DELETE CUSTOMER
-app.delete('/api/customers/:id', async (req,res)=>{
+app.delete('/api/customers/:id', async (req, res) => {
     try {
         const customerId = req.params.id;
-        const result = await Customer.deleteOne({_id:customerId});
-        res.json({deletedCount: result.deletedCount});
+        const result = await Customer.deleteOne({ _id: customerId });
+        res.json({ deletedCount: result.deletedCount });
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong' })        
+        res.status(500).json({ error: 'Something went wrong' })
+    }
+});
+
+//GET ORDER (nested v CUSTOMER)
+app.get('/api/orders/:id', async (req, res) => {
+    try {
+        //POZOR: vrne celi customer objekt (tj. najvisji hierarhicni)
+        const result = await Customer.findOne({'orders._id':req.params.id});
+        if(result){
+            res.json(result);
+        }
+        else{
+            res.status(404).json({ error: 'Error: Order not found' });
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+});
+
+//UPDATE ORDER (posodobi LE DELE array objektov - NESTED)
+app.patch('/api/orders/:id', async (req, res) => {
+    try {
+        const orderId = req.params.id;
+        req.body._id = orderId; //ne spremeni id, ce ni podan v req.body
+        const order = await Customer.findOneAndUpdate(
+            //v customerju, pojdi v orderId od orderja, mongo bo vrnil top document (tj. customer)
+            //POZOR: za nested key-e uporabi single quote ('')
+            { 'orders._id': orderId },
+            //referenca na order z orderId-jem
+            { $set: { 'orders.$': req.body } },
+            { new: true }
+        );
+        console.log(order);
+        if (order) {
+            res.json({ order });
+        }
+        else{
+            res.status(404).json({ error: 'Error: Order not found' });
+        }
+    } catch (error) {
+        console.log(e.message);
+        res.status(500).json({ error: 'Something went wrong' });
     }
 });
 

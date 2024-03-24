@@ -6,8 +6,13 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // name: String,
-    industry: String
+    industry: String,
+    orders: [
+        {
+            description: String,
+            amountInCents: Number
+        }
+    ]
 });
 
 //ustvari collection v mongoDB
