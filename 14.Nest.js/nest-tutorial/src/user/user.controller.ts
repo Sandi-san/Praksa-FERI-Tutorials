@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { CreateUserDto, UpdateUserDto } from './dto/createUserDto';
 import { UserService } from './user.service';
 import { CommentService } from 'src/comment/comment.service';
+import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
 
 //vsak url se bo zacel z /user/
 @Controller('user')
@@ -44,6 +45,8 @@ export class UserController {
         return this.userService.create(createUserDto)
     }
 
+    //z JWT metodo: vrne unautherized, ce nimamo access tokena v header-ju (npr. Postman header)
+    @UseGuards(JwtGuard)
     //GET za commente
     @Get(":id/comments")
     getUserComments(@Param("id") id:string){

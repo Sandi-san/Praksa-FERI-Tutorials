@@ -15,6 +15,11 @@ export class UserService {
         return await this.userRepo.findOne({where:{id:id}})
     }
 
+    //najdi po Username, za preverjanje obstojecega user-ja
+    async findOneWithUsername(userName: string) {
+        return await this.userRepo.findOne({where:{email: userName}})
+    }
+
     //za POST
     async create(createUserDto: CreateUserDto){
         //create User object
