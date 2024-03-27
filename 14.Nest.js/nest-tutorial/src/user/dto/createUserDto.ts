@@ -1,4 +1,5 @@
-import { IsEmail, IsNumberString, IsString } from "class-validator"
+import { PartialType } from "@nestjs/mapped-types"
+import { IsEmail, IsString } from "class-validator"
 
 //v DTO definiramo body objekta
 export class CreateUserDto{
@@ -8,6 +9,9 @@ export class CreateUserDto{
     name: string
     @IsEmail()
     email: string
-    @IsNumberString()
-    phone:string
+    @IsString()
+    password:string
 }
+//ustvari UpdateUserDto, ki ima ISTE parametre kot CreateUserDto (izognes ponavljanju)
+//PartialType-optional spremenljivke (dodaj z npm i @nestjs/mapped-types)
+export class UpdateUserDto extends PartialType(CreateUserDto){}
