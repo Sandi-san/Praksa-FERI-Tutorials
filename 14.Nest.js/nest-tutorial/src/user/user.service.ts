@@ -8,20 +8,20 @@ import { Repository } from 'typeorm';
 export class UserService {
 
     //odobi dostop do User repository v DB
-    constructor(@InjectRepository(User) private readonly userRepo:Repository<User>){}
+    constructor(@InjectRepository(User) private readonly userRepo: Repository<User>) { }
 
     //za GET(id)
     async findOne(id: number) {
-        return await this.userRepo.findOne({where:{id:id}})
+        return await this.userRepo.findOne({ where: { id: id } })
     }
 
     //najdi po Username, za preverjanje obstojecega user-ja
     async findOneWithUsername(userName: string) {
-        return await this.userRepo.findOne({where:{email: userName}})
+        return await this.userRepo.findOne({ where: { email: userName } })
     }
 
     //za POST
-    async create(createUserDto: CreateUserDto){
+    async create(createUserDto: CreateUserDto) {
         //create User object
         const user = await this.userRepo.create(createUserDto)
         //shrani v DB
@@ -29,7 +29,7 @@ export class UserService {
     }
 
     //ZA UPDATE (UpdateUserDto je v CreateUserDto)
-    async update(id:number, updateUserDto: UpdateUserDto){
-        return await this.userRepo.update(id,updateUserDto)
+    async update(id: number, updateUserDto: UpdateUserDto) {
+        return await this.userRepo.update(id, updateUserDto)
     }
 }
