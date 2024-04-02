@@ -16,4 +16,12 @@ export class PrismaService extends PrismaClient {
             }
         })
     }
+
+    cleanDB(){
+        //delete najprej bookmarks & nato users (transaction)
+        return this.$transaction([
+            this.bookmark.deleteMany(),
+            this.user.deleteMany(),
+        ])
+    }
 }
