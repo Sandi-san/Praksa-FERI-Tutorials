@@ -18,7 +18,7 @@ export const ORMConfig = async (configService: ConfigService): Promise<Connectio
   entities: ['dist/**/*.entity.ts'],
   synchronize: true, //sinhroniziraj bazo LE V DEVELOPMENT
 
-  // Ker mi na localhost ne dela otherwise
+  //CHANGE: Ker mi na localhost ne dela otherwise
   ssl: false,
   // extra: {
   //     ssl: {

@@ -28,8 +28,8 @@ export class UpdateUserDto {
   })
   confirm_password?: string
 
-  @IsOptional()
-  refresh_token?: string
+  // @IsOptional()
+  // refresh_token?: string
 
   @IsOptional()
   role_id?: string

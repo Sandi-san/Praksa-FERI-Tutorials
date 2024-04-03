@@ -25,12 +25,12 @@ export abstract class AbstractService {
     }
   }
 
-  async findBy(condition, relations?: [], errorMessage?: string): Promise<any[]> {
+  async findBy(condition, relations?: [], errorMessage?: string): Promise<any> {
     try {
       //ni treba dodat await, ker samo returnamo
       return this.repository.findOne({
         where: condition, //where stavek
-        relations, //'role' iz user.entity
+        relations, //'role' iz user.entity  //TODO: error z nek User metadata ko porobas POST-at v rest.http
       })
     } catch (error) {
       Logging.error(error)
@@ -40,8 +40,8 @@ export abstract class AbstractService {
     }
   }
 
-  //TODO: morda moral tu dat relations = [] ??
-  async findById(id: string, relations?: [], errorMessage?: string): Promise<any> {
+  //CHANGE: tu dal relations?: namesto relations = []
+  async findById(id: string, relations = [], errorMessage?: string): Promise<any> {
     try {
       const element = await this.repository.findOne({
         where: { id }, //id : id
