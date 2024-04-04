@@ -11,7 +11,8 @@ export abstract class AbstractService {
 
   //"CRUD"
 
-  async findAll(relations: [], errorMessage?: string): Promise<any[]> {
+  //CHANGE: pri vseh dal:: relations?: namesto relations = []
+  async findAll(relations = [], errorMessage?: string): Promise<any[]> {
     try {
       //ni treba dodat await, ker samo returnamo
       return this.repository.find({
@@ -25,7 +26,7 @@ export abstract class AbstractService {
     }
   }
 
-  async findBy(condition, relations?: [], errorMessage?: string): Promise<any> {
+  async findBy(condition, relations = [], errorMessage?: string): Promise<any> {
     try {
       //ni treba dodat await, ker samo returnamo
       return this.repository.findOne({
@@ -40,7 +41,6 @@ export abstract class AbstractService {
     }
   }
 
-  //CHANGE: tu dal relations?: namesto relations = []
   async findById(id: string, relations = [], errorMessage?: string): Promise<any> {
     try {
       const element = await this.repository.findOne({

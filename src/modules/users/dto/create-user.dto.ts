@@ -26,5 +26,6 @@ export class CreateUserDto {
   })
   confirm_password: string
 
-  // role_id: string
+  @IsNotEmpty()
+  role_id: string
 }
