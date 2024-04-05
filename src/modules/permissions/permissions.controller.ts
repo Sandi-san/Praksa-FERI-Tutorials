@@ -1,7 +1,8 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common'
-import { PermissionsService } from './permissions.service'
 import { Permission } from 'entities/permission.entity'
+
 import { CreatePermissionDto } from './dto/create-permission.dto'
+import { PermissionsService } from './permissions.service'
 
 @Controller('permissions')
 export class PermissionsController {

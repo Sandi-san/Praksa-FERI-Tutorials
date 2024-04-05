@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, InternalServerErrorException } from '@nestjs/common'
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common'
 import { PaginatedResult } from 'interfaces/paginated-result.interface'
 import Logging from 'library/Logging'
 import { Repository } from 'typeorm'
@@ -89,7 +89,7 @@ export abstract class AbstractService {
       }
     } catch (error) {
       Logging.error(error)
-      throw new InternalServerErrorException(`Something went wrong while searching for paginated elements`)
+      throw new InternalServerErrorException('Something went wrong while searching for paginated elements')
     }
   }
 }

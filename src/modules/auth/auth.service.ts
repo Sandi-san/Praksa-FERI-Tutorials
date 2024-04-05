@@ -1,11 +1,12 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { User } from 'entities/user.entity'
+import { Request } from 'express'
 import Logging from 'library/Logging'
 import { UsersService } from 'modules/users/users.service'
 import { compareHash, hash } from 'utils/bcrypt'
+
 import { RegisterUserDto } from './dto/register-user.dto'
-import { Request } from 'express'
 
 @Injectable()
 export class AuthService {
