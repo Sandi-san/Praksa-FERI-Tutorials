@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button'
 import * as API from 'api/Api'
 import { StatusCode } from 'constants/errorConstants'
 import authStore from 'stores/auth.store'
+import { observer } from 'mobx-react'
 
 const LoginForm: FC = () => {
   const navigate = useNavigate()
@@ -86,7 +87,7 @@ const LoginForm: FC = () => {
           )}
         />
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <p className="mb-0">Don{"'"}t have an account yet?</p>
+          <p className="mb-0">Don&#39;t have an account yet?</p>
           <Link className="text-decoration-none text-end" to={routes.SIGNUP}>
             Create account
           </Link>
@@ -108,4 +109,5 @@ const LoginForm: FC = () => {
     </>
   )
 }
-export default LoginForm
+//za change state
+export default observer(LoginForm)
