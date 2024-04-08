@@ -29,7 +29,6 @@ export const useRegisterForm = () => {
   const {
     handleSubmit,
     formState: { errors },
-    reset,
     control,
   } = useForm({
     defaultValues: {
@@ -46,7 +45,6 @@ export const useRegisterForm = () => {
   return {
     handleSubmit,
     errors,
-    reset,
     control,
   }
 }

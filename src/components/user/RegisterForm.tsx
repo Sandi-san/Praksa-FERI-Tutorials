@@ -14,12 +14,11 @@ import Button from 'react-bootstrap/Button'
 import * as API from 'api/Api'
 import { StatusCode } from 'constants/errorConstants'
 import authStore from 'stores/auth.store'
-import { string } from 'prop-types'
 import Avatar from 'react-avatar'
 
 const RegisterForm: FC = () => {
   const navigate = useNavigate()
-  const { handleSubmit, errors, control, reset } = useRegisterForm()
+  const { handleSubmit, errors, control } = useRegisterForm()
   const [apiError, setApiError] = useState('')
   const [showError, setShowError] = useState(false)
 
