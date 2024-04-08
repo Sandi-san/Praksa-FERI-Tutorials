@@ -24,13 +24,19 @@ import { join } from 'path'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { UsersService } from './users.service'
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 
+//Swagger - group by na swagger api strani
+@ApiTags('users')
 @Controller('users')
 //da deluje Exclude() iz user.entity
 @UseInterceptors(ClassSerializerInterceptor)
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
+  //Swagger
+  @ApiCreatedResponse({ description: 'List all users.' })
+  @ApiBadRequestResponse({ description: 'Error for find all users.' })
   @Get()
   @HttpCode(HttpStatus.OK)
   @HasPermission('users')
@@ -45,6 +51,8 @@ export class UsersController {
     return this.userService.findById(id)
   }
 
+  @ApiCreatedResponse({ description: 'Creates new user.' })
+  @ApiBadRequestResponse({ description: 'Error for create user.' })
   @Post()
   @HttpCode(HttpStatus.CREATED)
   // @HasPermissions('users')

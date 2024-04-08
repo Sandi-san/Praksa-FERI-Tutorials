@@ -15,7 +15,8 @@ export const ORMConfig = async (configService: ConfigService): Promise<Connectio
   password: configService.get('DATABASE_PWD'),
   database: configService.get('DATABASE_NAME'),
   //vkljuci vsak ".entity.ts" file
-  entities: ['dist/**/*.entity.ts'],
+  // entities: ['dist/**/*.entity.ts'],
+  entities: [__dirname + '/../**/*.entity.{js,ts}'],
   synchronize: true, //sinhroniziraj bazo LE V DEVELOPMENT
 
   //CHANGE: Ker mi na localhost ne dela otherwise
